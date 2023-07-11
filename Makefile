@@ -2,7 +2,7 @@ init:
 	go mod init booking-cli
 
 run:
-	go run main.go
+	go run .
 
 
 .PHONY: init
