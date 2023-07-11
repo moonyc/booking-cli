@@ -19,15 +19,15 @@ func main() {
 	var userTickets int
 
 	// USER INPUT
-	fmt.Println("Enter your first name:")
+	fmt.Println("Enter your first name: ")
 	fmt.Scan(&firstName)
-	fmt.Println("Enter your last name:")
+	fmt.Println("Enter your last name: ")
 	fmt.Scan(&lastName)
-	fmt.Println("Enter your first email")
+	fmt.Println("Enter your first email: ")
 	fmt.Scan(&email)
-	fmt.Println("How many tickets do you want?")
+	fmt.Println("Enter number of tickets: ")
 	fmt.Scan(&userTickets)
 
-	fmt.Printf("User %v booked %v tickets.\n", firstName, userTickets)
+	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v. \n", firstName, lastName, userTickets, email)
 
 }
