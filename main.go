@@ -33,37 +33,48 @@ func main() {
 		fmt.Println("Enter number of tickets: ")
 		fmt.Scan(&userTickets)
 
-		if userTickets > remainingTickets {
-			fmt.Printf("We only have %v tickets remaining, so you can't book %v tickets. \n", remainingTickets, userTickets)
-			continue
-		}
+		var isValidName bool = len(firstName) >= 2 && len(lastName) >= 2
+		isValidEmail := strings.Contains(email, "@")
+		isValidTicketNumber := userTickets > 0 && userTickets < remainingTickets
 
-		remainingTickets = remainingTickets - userTickets
+		if isValidName && isValidEmail && isValidTicketNumber {
+			remainingTickets = remainingTickets - userTickets
 
-		bookings = append(bookings, firstName+" "+lastName)
+			bookings = append(bookings, firstName+" "+lastName)
 
-		// fmt.Printf("The whole array: %v.\n", bookings)
-		// fmt.Printf("The first value: %v.\n", bookings[0])
-		// fmt.Printf("The type: %T .\n", bookings)
-		// fmt.Printf("The length: %v.\n", len(bookings))
+			// fmt.Printf("The whole array: %v.\n", bookings)
+			// fmt.Printf("The first value: %v.\n", bookings[0])
+			// fmt.Printf("The type: %T .\n", bookings)
+			// fmt.Printf("The length: %v.\n", len(bookings))
 
-		fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v. \n", firstName, lastName, userTickets, email)
-		fmt.Printf("%v tickets remaining for %v.\n", remainingTickets, conferenceName)
+			fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v. \n", firstName, lastName, userTickets, email)
+			fmt.Printf("%v tickets remaining for %v.\n", remainingTickets, conferenceName)
 
-		firstNames := []string{}
-		for _, booking := range bookings {
-			var names = strings.Fields(booking)
-			var firstName = names[0]
-			firstNames = append(firstNames, firstName)
-		}
-		fmt.Printf("The first names of bookings are: %v. \n", firstNames)
+			firstNames := []string{}
+			for _, booking := range bookings {
+				var names = strings.Fields(booking)
+				var firstName = names[0]
+				firstNames = append(firstNames, firstName)
+			}
+			fmt.Printf("The first names of bookings are: %v. \n", firstNames)
 
-		var noTicketsLeft bool = remainingTickets == 0
+			var noTicketsLeft bool = remainingTickets == 0
 
-		if noTicketsLeft {
-			// end the program
-			fmt.Println("Our conference is booked out. Come back next year.")
-			break
+			if noTicketsLeft {
+				// end the program
+				fmt.Println("Our conference is booked out. Come back next year.")
+				break
+			}
+		} else {
+			if !isValidName {
+				fmt.Println("First name or last name you entered is too short")
+			}
+			if !isValidEmail {
+				fmt.Println("Email address you entered doesn't contain @ sign")
+			}
+			if !isValidTicketNumber {
+				fmt.Println(("Number of tickets you entered is invalid"))
+			}
 		}
 	}
 
