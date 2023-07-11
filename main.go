@@ -13,7 +13,8 @@ func main() {
 
 	fmt.Printf("conferenceTickets is %T, remainingTickets is %T, conferenceName is %T. \n", conferenceTickets, remainingTickets, conferenceName)
 
-	fmt.Printf("Welcome to our %v booking application!\n", conferenceName)
+	greetUsers(conferenceName)
+
 	fmt.Printf("We have a total of %v and %v are still available.\n", conferenceTickets, remainingTickets)
 	fmt.Println("Get your tickets here to attend.")
 
@@ -77,5 +78,8 @@ func main() {
 			}
 		}
 	}
+}
 
+func greetUsers(conferenceName string) {
+	fmt.Printf("Welcome to our %v booking application!\n", conferenceName)
 }
