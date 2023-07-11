@@ -13,7 +13,7 @@ func main() {
 	fmt.Printf("We have a total of %v and %v are still available.\n", conferenceTickets, remainingTickets)
 	fmt.Println("Get your tickets here to attend.")
 
-	var bookings [50]string
+	var bookings []string
 
 	var firstName string
 	var lastName string
